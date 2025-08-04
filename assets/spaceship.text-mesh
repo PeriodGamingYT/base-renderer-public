@@ -1,0 +1,162 @@
+point 1.000000 -1.000000 -1.000000
+point 1.000000 1.000000 -1.000000
+point 1.000000 -1.000000 1.000000
+point 1.000000 1.000000 1.000000
+point -1.000000 -1.000000 -1.000000
+point -1.000000 1.000000 -1.000000
+point -1.000000 -1.000000 1.000000
+point -1.000000 1.000000 1.000000
+point -0.720000 0.120000 -1.400000
+point 0.300000 0.000000 5.000000
+point -0.600000 -0.600000 -1.400000
+point -0.300000 0.000000 5.000000
+point -1.200000 0.200000 1.000000
+point -0.600000 0.600000 -1.400000
+point -1.200000 -0.200000 -1.000000
+point -1.200000 0.200000 -1.000000
+point 1.200000 -0.200000 1.000000
+point 1.200000 -0.200000 -1.000000
+point 1.200000 0.200000 -1.000000
+point 1.200000 0.200000 1.000000
+point -1.200000 -0.200000 1.000000
+point 0.600000 0.600000 -1.400000
+point 0.600000 -0.600000 -1.400000
+point -4.200000 0.060000 1.000000
+point -4.200000 -0.060000 1.000000
+point -4.200000 -0.060000 -1.000000
+point -4.200000 0.060000 -1.000000
+point 4.200000 -0.060000 1.000000
+point 4.200000 -0.060000 -1.000000
+point 4.200000 0.060000 -1.000000
+point 4.200000 0.060000 1.000000
+point 4.200000 -0.180000 1.000000
+point 4.200000 -0.180000 -1.000000
+point 4.200000 0.180000 -1.000000
+point 4.200000 0.180000 1.000000
+point 4.500000 -0.180000 1.000000
+point 4.500000 -0.180000 -1.000000
+point 4.500000 0.180000 -1.000000
+point 4.500000 0.180000 1.000000
+point -4.200000 0.180000 1.000000
+point -4.200000 -0.180000 1.000000
+point -4.200000 -0.180000 -1.000000
+point -4.200000 0.180000 -1.000000
+point -4.500000 0.180000 1.000000
+point -4.500000 -0.180000 1.000000
+point -4.500000 -0.180000 -1.000000
+point -4.500000 0.180000 -1.000000
+point 4.350000 -0.180000 3.000000
+point 4.350000 0.180000 3.000000
+point -4.350000 0.180000 3.000000
+point -4.350000 -0.180000 3.000000
+point 0.000000 -0.700000 3.000000
+point -0.720000 -0.120000 -1.400000
+point 0.720000 -0.120000 -1.400000
+point 0.720000 0.120000 -1.400000
+
+tri points 21 52 12 color 255 255 255
+tri points 6 13 8
+tri points 5 23 1
+tri points 7 1 3
+tri points 4 6 8
+tri points 4 12 10
+tri points 17 20 10
+tri points 20 4 10
+tri points 17 52 3
+tri points 7 3 52
+tri points 16 14 9
+tri points 7 15 5
+tri points 20 30 19
+tri points 18 23 54
+tri points 4 19 2
+tri points 1 17 3
+tri points 13 25 21
+tri points 13 21 12
+tri points 12 52 10
+tri points 8 13 12
+tri points 27 42 43
+tri points 15 27 16
+tri points 21 26 15
+tri points 16 24 13
+tri points 31 34 30
+tri points 18 28 17
+tri points 17 31 20
+tri points 19 29 18
+tri points 32 49 35
+tri points 29 32 28
+tri points 31 32 35
+tri points 29 34 33
+tri points 38 36 37
+tri points 34 37 33
+tri points 35 38 34
+tri points 33 36 32
+tri points 43 44 40
+tri points 25 42 26
+tri points 27 40 24
+tri points 25 40 41
+tri points 44 46 45
+tri points 40 44 50
+tri points 42 47 43
+tri points 41 46 42
+tri points 44 47 46
+tri points 32 36 48
+tri points 39 35 49
+tri points 39 48 36
+tri points 45 51 50
+tri points 40 51 41
+tri points 45 41 51
+tri points 45 50 44
+tri points 18 29 28
+tri points 17 28 31
+tri points 4 2 6
+tri points 18 55 19
+tri points 15 11 5
+tri points 19 22 2
+tri points 2 14 6
+tri points 16 53 15
+tri points 53 9 54
+tri points 19 30 29
+tri points 15 26 27
+tri points 16 27 24
+tri points 13 24 25
+tri points 21 25 26
+tri points 7 21 15
+tri points 7 5 1
+tri points 21 7 52
+tri points 1 18 17
+tri points 17 10 52
+tri points 4 20 19
+tri points 20 31 30
+tri points 4 8 12
+tri points 43 47 44
+tri points 6 16 13
+tri points 40 50 51
+tri points 41 45 46
+tri points 42 46 47
+tri points 2 22 14
+tri points 19 55 22
+tri points 18 54 55
+tri points 18 1 23
+tri points 5 11 23
+tri points 15 53 11
+tri points 16 9 53
+tri points 16 6 14
+tri points 9 14 22
+tri points 22 55 9
+tri points 55 54 9
+tri points 54 23 11
+tri points 11 53 54
+tri points 34 38 37
+tri points 38 39 36
+tri points 39 49 48
+tri points 35 39 38
+tri points 33 37 36
+tri points 25 41 42
+tri points 27 43 40
+tri points 31 35 34
+tri points 29 33 32
+tri points 32 48 49
+tri points 27 26 42
+tri points 31 28 32
+tri points 29 30 34
+tri points 25 24 40

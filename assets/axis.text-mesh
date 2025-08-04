@@ -1,0 +1,219 @@
+point -11.748000 -0.360000 1.268000
+point -11.276000 -0.360000 1.268000
+point -10.424000 -0.360000 0.228000
+point -9.568000 -0.360000 1.268000
+point -9.092000 -0.360000 1.268000
+point -10.184000 -0.360000 -0.048000
+point -9.008000 -0.360000 -1.460000
+point -9.484000 -0.360000 -1.460000
+point -10.424000 -0.360000 -0.332000
+point -11.352000 -0.360000 -1.460000
+point -11.824000 -0.360000 -1.460000
+point -10.660000 -0.360000 -0.048000
+point -9.484000 0.373033 -1.460000
+point -10.424000 0.373033 -0.332000
+point -11.748000 0.373033 1.268000
+point -10.660000 0.373033 -0.048000
+point -9.568000 0.373033 1.268000
+point -10.184000 0.373033 -0.048000
+point -11.824000 0.373033 -1.460000
+point -9.008000 0.373033 -1.460000
+point -10.424000 0.373033 0.228000
+point -11.352000 0.373033 -1.460000
+point -9.092000 0.373033 1.268000
+point -11.276000 0.373033 1.268000
+point -0.620000 -0.380000 11.376000
+point 1.116000 -0.380000 9.000000
+point -1.344000 -0.380000 9.000000
+point -1.344000 -0.380000 9.352000
+point 0.392000 -0.380000 9.352000
+point -1.344000 -0.380000 11.728000
+point 1.008000 -0.380000 11.728000
+point 1.008000 -0.380000 11.376000
+point 0.392000 0.384923 9.352000
+point -1.344000 0.384923 11.728000
+point -0.620000 0.384923 11.376000
+point -1.344000 0.384923 9.352000
+point 1.116000 0.384923 9.000000
+point 1.008000 0.384923 11.728000
+point 1.008000 0.384923 11.376000
+point -1.344000 0.384923 9.000000
+point -0.250000 10.788000 0.104000
+point -0.250000 11.728000 -0.628000
+point -0.250000 11.728000 -1.100000
+point -0.250000 10.444000 -0.088000
+point -0.250000 9.000000 -0.088000
+point -0.250000 9.000000 0.304000
+point -0.250000 10.440000 0.304000
+point -0.250000 11.728000 1.316000
+point -0.250000 11.728000 0.844000
+point 0.304321 9.000000 -0.088000
+point 0.304321 9.000000 0.304000
+point 0.304321 10.440000 0.304000
+point 0.304321 10.444000 -0.088000
+point 0.304321 11.728000 1.316000
+point 0.304321 10.788000 0.104000
+point 0.304321 11.728000 -0.628000
+point 0.304321 11.728000 -1.100000
+point 0.304321 11.728000 0.844000
+point 0.500000 -0.500000 -0.500000
+point 0.500000 0.500000 -0.500000
+point 0.500000 -0.500000 0.500000
+point 0.500000 0.500000 0.500000
+point -0.500000 -0.500000 -0.500000
+point -0.500000 0.500000 -0.500000
+point -0.500000 -0.500000 0.500000
+point -0.500000 0.500000 0.500000
+point -8.500000 0.500000 0.500000
+point -8.500000 -0.500000 0.500000
+point -8.500000 -0.500000 -0.500000
+point -8.500000 0.500000 -0.500000
+point 0.500000 8.500000 -0.500000
+point 0.500000 8.500000 0.500000
+point -0.500000 8.500000 0.500000
+point -0.500000 8.500000 -0.500000
+point 0.500000 0.500000 8.500000
+point 0.500000 -0.500000 8.500000
+point -0.500000 -0.500000 8.500000
+point -0.500000 0.500000 8.500000
+
+tri points 6 5 4 color 255 255 255
+tri points 6 4 3
+tri points 3 2 1
+tri points 3 1 12
+tri points 6 3 12
+tri points 7 6 12
+tri points 7 12 9
+tri points 9 12 11
+tri points 7 9 8
+tri points 10 9 11
+tri points 18 17 23
+tri points 18 21 17
+tri points 21 15 24
+tri points 21 16 15
+tri points 18 16 21
+tri points 20 16 18
+tri points 20 14 16
+tri points 14 19 16
+tri points 20 13 14
+tri points 22 19 14
+tri points 6 23 5
+tri points 9 13 8
+tri points 10 14 9
+tri points 7 18 6
+tri points 1 16 12
+tri points 11 22 10
+tri points 2 15 1
+tri points 5 17 4
+tri points 4 21 3
+tri points 3 24 2
+tri points 8 20 7
+tri points 12 19 11
+tri points 32 31 30
+tri points 32 30 25
+tri points 25 30 29
+tri points 26 25 29
+tri points 26 29 28
+tri points 26 28 27
+tri points 39 34 38
+tri points 39 35 34
+tri points 35 33 34
+tri points 37 33 35
+tri points 37 36 33
+tri points 37 40 36
+tri points 28 40 27
+tri points 25 39 32
+tri points 32 38 31
+tri points 26 35 25
+tri points 29 36 28
+tri points 30 33 29
+tri points 27 37 26
+tri points 31 34 30
+tri points 44 42 43
+tri points 44 41 42
+tri points 41 48 49
+tri points 41 47 48
+tri points 44 47 41
+tri points 45 47 44
+tri points 45 46 47
+tri points 53 57 56
+tri points 53 56 55
+tri points 55 58 54
+tri points 55 54 52
+tri points 53 55 52
+tri points 50 53 52
+tri points 50 52 51
+tri points 58 41 49
+tri points 50 46 45
+tri points 55 42 41
+tri points 54 49 48
+tri points 51 47 46
+tri points 52 48 47
+tri points 56 43 42
+tri points 57 44 43
+tri points 53 45 44
+tri points 60 61 59
+tri points 65 78 66
+tri points 66 68 65
+tri points 64 59 63
+tri points 65 59 61
+tri points 60 72 62
+tri points 67 69 68
+tri points 63 70 64
+tri points 65 69 63
+tri points 64 67 66
+tri points 72 74 73
+tri points 64 71 60
+tri points 62 73 66
+tri points 66 74 64
+tri points 75 77 76
+tri points 61 77 65
+tri points 66 75 62
+tri points 62 76 61
+tri points 6 18 23
+tri points 9 14 13
+tri points 10 22 14
+tri points 7 20 18
+tri points 1 15 16
+tri points 11 19 22
+tri points 2 24 15
+tri points 5 23 17
+tri points 4 17 21
+tri points 3 21 24
+tri points 8 13 20
+tri points 12 16 19
+tri points 28 36 40
+tri points 25 35 39
+tri points 32 39 38
+tri points 26 37 35
+tri points 29 33 36
+tri points 30 34 33
+tri points 27 40 37
+tri points 31 38 34
+tri points 58 55 41
+tri points 50 51 46
+tri points 55 56 42
+tri points 54 58 49
+tri points 51 52 47
+tri points 52 54 48
+tri points 56 57 43
+tri points 57 53 44
+tri points 53 50 45
+tri points 60 62 61
+tri points 65 77 78
+tri points 66 67 68
+tri points 64 60 59
+tri points 65 63 59
+tri points 60 71 72
+tri points 67 70 69
+tri points 63 69 70
+tri points 65 68 69
+tri points 64 70 67
+tri points 72 71 74
+tri points 64 74 71
+tri points 62 72 73
+tri points 66 73 74
+tri points 75 78 77
+tri points 61 76 77
+tri points 66 78 75
+tri points 62 75 76

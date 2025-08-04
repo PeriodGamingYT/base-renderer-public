@@ -1,0 +1,30 @@
+
+# handwritten, just hand convert an .obj
+# into a .text-mesh
+point -0.5, -0.5, -0.5
+point  0.5, -0.5, -0.5
+point  0.5,  0.5, -0.5
+point -0.5,  0.5, -0.5
+
+point -0.5, -0.5,  0.5
+point  0.5, -0.5,  0.5
+point  0.5,  0.5,  0.5
+point -0.5,  0.5,  0.5
+
+tri points: 0, 2, 1, color: 255,   0,   0
+tri points: 0, 3, 2, color:   0, 255,   0
+
+tri points: 4, 5, 6, color: 255, 255,   0
+tri points: 4, 6, 7, color:   0,   0, 255
+
+tri points: 4, 3, 0, color: 255,   0, 255
+tri points: 4, 7, 3, color:   0, 255, 255
+
+tri points: 5, 1, 2, color: 128,   0,   0
+tri points: 5, 2, 6, color:   0, 128,   0
+
+tri points: 0, 1, 5, color: 128, 128,   0
+tri points: 0, 5, 4, color:   0,   0, 128
+
+tri points: 3, 6, 2, color: 128,   0, 128
+tri points: 3, 7, 6, color:   0, 128, 128
