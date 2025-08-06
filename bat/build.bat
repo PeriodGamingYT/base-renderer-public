@@ -15,7 +15,7 @@ PUSHD %~dp0\..
 		CL ^
 			/I..\include /arch:AVX ^
 			^
-				%DebugCompilerFlags% ^
+				%ReleaseCompilerFlags% ^
 			^
 				..\src\includes.c ^
 				..\src\screen-vec.c ^
