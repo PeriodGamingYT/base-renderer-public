@@ -15,7 +15,7 @@ void Cleanup(ProgramState *state) {
 	FreeArena(&state->lights);
 }
 
-LRESULT WindowProc(
+LRESULT CALLBACK WindowProc(
 	HWND windowHandle,
 	UINT messageType,
 	WPARAM extraMessage,
