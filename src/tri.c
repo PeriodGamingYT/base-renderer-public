@@ -97,7 +97,7 @@ static inline void DrawTriLines(
 			currentStartX = 0;
 		}
 
-		__m256 simdGenericWStep= _mm256_set1_ps(8);
+		__m256 simdGenericWStep = _mm256_set1_ps(8);
 		__m256 simdGenericW = _mm256_setr_ps(0, 1, 2, 3, 4, 5, 6, 7);
 
 		__m256 simdStartWStep = _mm256_mul_ps(
