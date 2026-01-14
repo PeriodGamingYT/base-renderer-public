@@ -14,7 +14,7 @@ typedef struct TriPointStruct {
 } TriPoint;
 
 typedef struct TriLinesStateStruct {
-	float longXStep, longWStep;
+	float xStep, wStep;
 	Pixel color; __m256i simdColor;
 
 	float *startDepthLine;
@@ -44,7 +44,7 @@ static inline void DrawTriLines(
 	float diffXShort = endTriPoint.x - startTriPoint.x;
 	float diffYShort = endTriPoint.y - startTriPoint.y;
 	float diffWShort = endTriPoint.w - startTriPoint.w;
-	if(diffYShort <= 1) { return; }
+	if(diffYShort < 1) { return; }
 
 	float shortXStep = diffXShort / diffYShort;
 	float shortWStep = diffWShort / diffYShort;
@@ -53,24 +53,28 @@ static inline void DrawTriLines(
 	float endYDiff = startTriPoint.y - innerEndTriPoint.y;
 
 	float startX = innerStartTriPoint.x + (startYDiff * shortXStep);
-	float endX = innerEndTriPoint.x + (endYDiff * state->longXStep);
+	float endX = innerEndTriPoint.x + (endYDiff * state->xStep);
 
 	float startW = innerStartTriPoint.w + (startYDiff * shortWStep);
-	float endW = innerEndTriPoint.w + (endYDiff * state->longWStep);
+	float endW = innerEndTriPoint.w + (endYDiff * state->wStep);
 
 	if(startTriPoint.y < 0) {
 		float increaseY = 0 - startTriPoint.y;
 		diffYShort += increaseY;
 		startX += increaseY * shortXStep;
-		endX += increaseY * state->longXStep;
+		endX += increaseY * state->xStep;
 		startW += increaseY * shortWStep;
-		endW += increaseY * state->longWStep;
+		endW += increaseY * state->wStep;
 
 		startTriPoint.y = 0;
 	}
 
-	if(endTriPoint.y >= state->size.y - 1) { endTriPoint.y = state->size.y - 2; }
+	if(endTriPoint.y >= state->size.y - 2) {
+		endTriPoint.y = state->size.y - 2;
+	}
 
+	__m256 simdGenericWStep = _mm256_set1_ps(8);
+	__m256 simdGenericW = _mm256_setr_ps(0, 1, 2, 3, 4, 5, 6, 7);
 	for(int y = startTriPoint.y; y <= endTriPoint.y; y++) {
 		int currentStartX = startX;
 		int currentEndX = endX;
@@ -96,9 +100,6 @@ static inline void DrawTriLines(
 			currentEndW += increaseX * endWStep;
 			currentStartX = 0;
 		}
-
-		__m256 simdGenericWStep = _mm256_set1_ps(8);
-		__m256 simdGenericW = _mm256_setr_ps(0, 1, 2, 3, 4, 5, 6, 7);
 
 		__m256 simdStartWStep = _mm256_mul_ps(
 			_mm256_set1_ps(startWStep),
@@ -126,26 +127,30 @@ static inline void DrawTriLines(
 			)
 		);
 
-		if(currentEndX >= state->size.x)  { currentEndX = state->size.x - 1; }
-		int x = 0;
+		if(currentEndX >= state->size.x - 2)  {
+			currentEndX = state->size.x - 2;
+		}
 
 		_mm_prefetch((char *)(&state->startDepthLine[currentStartX]), _MM_HINT_T0);
 		_mm_prefetch((char *)(&state->startColorLine[currentStartX]), _MM_HINT_T0);
 
-		for(x = currentStartX; x <= currentEndX - 8; x += 8) {
-			__m256 currentSimdDepth = _mm256_load_ps(&state->startDepthLine[x]);
+		int x = currentStartX;
+		float *currentSimdDepthPointer = (float *)(&state->startDepthLine[x]);
+		__m256i *currentSimdColorPointer = (__m256i *)(&state->startColorLine[x]);
+		for(; x <= currentEndX - 8; x += 8) {
+			__m256 currentSimdDepth = _mm256_load_ps(currentSimdDepthPointer);
+			__m256i currentSimdColor = _mm256_load_si256(currentSimdColorPointer);
+
 			__m256 simdDepth = _mm256_add_ps(simdStartW, simdEndW);
 			__m256i mask = _mm256_castps_si256(
 				_mm256_cmp_ps(simdDepth, currentSimdDepth, _CMP_GT_OS)
 			);
 
 			_mm256_maskstore_ps(
-				&state->startDepthLine[x],
+				currentSimdDepthPointer,
 				mask,
 				simdDepth
 			);
-
-			__m256i currentSimdPixel = _mm256_load_si256((__m256i *)(&state->startColorLine[x]));
 
 			// no good support for AVX integer math, UGH!
 			// also _mm_maskstore_epi32,
@@ -158,29 +163,37 @@ static inline void DrawTriLines(
 			} simdPackedPixel;
 
 			simdPackedPixel.lowPixel = BlendEpi8(
-				_mm256_castsi256_si128(currentSimdPixel),
+				_mm256_castsi256_si128(currentSimdColor),
 				_mm256_castsi256_si128(state->simdColor),
 				_mm256_castsi256_si128(mask)
 			);
 
 			simdPackedPixel.highPixel = BlendEpi8(
-				Si256HighLane(currentSimdPixel),
+				Si256HighLane(currentSimdColor),
 
-				// save on a function call to Si256HighLane (state->simdColor is all the same 32-bit Pixel)
+				// save on a function call to Si256HighLane
+				// (state->simdColor is all the same 32-bit Pixel)
 				_mm256_castsi256_si128(state->simdColor),
 				Si256HighLane(mask)
 			);
 
-			_mm256_store_si256((__m256i *)(&state->startColorLine[x]), simdPackedPixel.fullPixel);
+			_mm256_store_si256(
+				currentSimdColorPointer,
+				simdPackedPixel.fullPixel
+			);
 
 			simdStartW = _mm256_sub_ps(simdStartW, simdStartWStep);
 			simdEndW = _mm256_add_ps(simdEndW, simdEndWStep);
-			currentStartW -= startWStep * 8;
-			currentEndW += endWStep * 8;
+
+			currentSimdDepthPointer += 8;
+			currentSimdColorPointer++;
 		}
 
-		// this computes the depth with zero issues
-		for(; x < currentEndX; x++) {
+		int stepsToTake = x - currentStartX;
+		currentStartW -= startWStep * stepsToTake;
+		currentEndW += endWStep * stepsToTake;
+
+		for(; x <= currentEndX + 1; x++) {
 			float currentW = currentStartW + currentEndW;
 			if(currentW > state->startDepthLine[x]) {
 				state->startDepthLine[x] = currentW;
@@ -192,10 +205,10 @@ static inline void DrawTriLines(
 		}
 
 		startX += shortXStep;
-		endX += state->longXStep;
+		endX += state->xStep;
 
 		startW += shortWStep;
-		endW += state->longWStep;
+		endW += state->wStep;
 
 		state->startDepthLine += state->size.x;
 		state->startColorLine += state->size.x;
@@ -252,8 +265,8 @@ static void InnerDrawTri(
 	}
 
 	TriLinesState triState = {
-		.longXStep = diffXLong / diffYLong,
-		.longWStep = diffWLong / diffYLong,
+		.xStep = diffXLong / diffYLong,
+		.wStep = diffWLong / diffYLong,
 
 		.color = color,
 		.simdColor = _mm256_set1_epi32(

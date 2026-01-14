@@ -58,8 +58,8 @@ PUSHD %~dp0\..
 		CALL bat\build.bat debug
 	)
 
-	IF EXIST obj\main.exe (
-		START !Debugger! obj\main.exe
+	IF EXIST obj\result\main.exe (
+		START !Debugger! obj\result\main.exe
 	)
 POPD
 ENDLOCAL
