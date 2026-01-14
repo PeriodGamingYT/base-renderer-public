@@ -144,7 +144,7 @@ int WINAPI WinMain(
 			&state.meshes, 1
 		));
 
-		*mesh = LoadMeshFromText("mountains.text-mesh", &state, 1);
+		*mesh = LoadMeshFromText("teapot.text-mesh", &state, 1);
 		UpdateMesh(
 			mesh,
 			VEC(0, 10, 0),
