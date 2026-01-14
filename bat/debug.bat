@@ -1,13 +1,65 @@
 @ECHO OFF
 
 PUSHD %~dp0\..
-	CALL bat/build.bat
-	IF EXIST obj\result\main.exe (
+	CALL bat\vs-setup-caller-snippet.bat
+POPD
 
-		REM Use this if you have RemedyBG installed and in your PATH
-		START REMEDYBG obj\result\main.exe
+REM Default parameters
+SET DefaultDebugger=REMEDYBG
 
-		REM If you want to use Visual Stupido
-		REM START DEVEND obj\result\main.exe
+REM Flag parameters
+SET NoCompile=0
+
+SET IsDebuggerUpcoming=0
+SET Debugger=%DefaultDebugger%
+
+SET IsInvalidCommandLine=0
+
+CLS
+SETLOCAL ENABLEDELAYEDEXPANSION
+PUSHD %~dp0\..
+	FOR %%x IN (%*) DO (
+		IF "%%x" == "no-compile" (
+			SET NoCompile=1
+		)
+
+
+		IF "!IsDebuggerUpcoming!" == "1" (
+			SET Debugger=%%x
+			SET IsDebuggerUpcoming=0
+		)
+
+		IF "%%x" == "use-debugger" (
+			SET IsDebuggerUpcoming=1
+		)
+
+
+		IF "%%x" == "help" (
+			ECHO debug[.bat] [no-compile] [use-debugger debugger-exe] [help]
+			ENDLOCAL
+			POPD
+			EXIT /B 0
+		)
+	)
+
+	IF "!IsDebuggerUpcoming!" == "1" (
+		ECHO Debugger wasn't provided with use-debugger
+		SET IsInvalidCommandLine=1
+	)
+
+	IF "!IsInvalidCommandLine!" == "1" (
+		ECHO Invalid command line arguments were provided, shutting down...
+		ENDLOCAL
+		POPD
+		EXIT /B 1
+	)
+
+	IF "!NoCompile!" == "0" (
+		CALL bat\build.bat debug
+	)
+
+	IF EXIST obj\main.exe (
+		START !Debugger! obj\main.exe
 	)
 POPD
+ENDLOCAL
