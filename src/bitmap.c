@@ -7,14 +7,15 @@ void UpdateWindowSize(
 ) {
 
 	// this function is SLOW
-	StretchDIBits(
+	SetDIBitsToDevice(
 		deviceContextHandle,
 		0, 0, state->bitmapSize.x, state->bitmapSize.y,
-		0, 0, newSize.x, newSize.y,
-		state->bitmapBuffer,
+		0, 0,
+		0,
+		state->bitmapSize.y,
+		&state->bitmapBuffer[0],
 		&state->bitmapInfo,
-		DIB_RGB_COLORS,
-		SRCCOPY
+		DIB_RGB_COLORS
 	);
 }
 
