@@ -3,6 +3,9 @@
 // NOTE: 6.5.2.2.7 The ellipsis notation in a function prototype declarator causes
 // argument type conversion to stop after the last declared parameter. The
 // default argument promotions are performed on trailing arguments.
+//
+// i.e.: floats are turned into doubles, and they must be taken in as such
+// and then be converted
 LightsSimd InitLightsSimd(float ambientLightAmount, ...) {
 	LightsSimd result = {
 		.ambientLightAmount = ambientLightAmount
