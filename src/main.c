@@ -138,7 +138,24 @@ int WINAPI WinMain(
 		state.lights = InitLightsSimd(
 			0.1,
 			LIGHT_TYPE_DIRECTIONAL, (float)(0.5), VecNormal(VEC(5, 0.5, 1)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.2), VecNormal(VEC(-1, 0, -1)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.2), VecNormal(VEC(-1, 0, -1)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.2), VecNormal(VEC(-1, 0, 0)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.2), VecNormal(VEC(-1, 0, 0)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.5), VecNormal(VEC(0, 1, 0)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.5), VecNormal(VEC(0, 1, 0)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.5), VecNormal(VEC(0, 1, 0)),
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.5), VecNormal(VEC(0, 1, 0)),
 			LIGHT_TYPE_POINT, (float)(25), VEC(-2, 0, -3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
+			LIGHT_TYPE_POINT, (float)(15), VEC(2, 0, 3),
 			LIGHT_TYPE_END
 		);
 

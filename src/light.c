@@ -131,6 +131,8 @@ float ComputeLights(
 	__m256 normalY = _mm256_set1_ps(normal.y);
 	__m256 normalZ = _mm256_set1_ps(normal.z);
 
+	__m256 maxValue = _mm256_set1_ps(0);
+
 	float *pointLightsPosXPointer = &lights->pointLightsPosX[0];
 	float *pointLightsPosYPointer = &lights->pointLightsPosY[0];
 	float *pointLightsPosZPointer = &lights->pointLightsPosZ[0];
@@ -138,7 +140,6 @@ float ComputeLights(
 		&lights->pointLightsIntensity[0]
 	);
 
-	// TODO: debug this, i suspect this might crash
 	int i = 0;
 	for(; i < lights->pointLightsSize - 8; i += 8) {
 		__m256 pointLightPosX = _mm256_load_ps(pointLightsPosXPointer);
@@ -171,7 +172,7 @@ float ComputeLights(
 			))
 		);
 
-		__m256 pointLight = _mm256_mul_ps(
+		__m256 pointLight = _mm256_max_ps(_mm256_mul_ps(
 			_mm256_mul_ps(
 				pointLightIntensity,
 				_mm256_add_ps(
@@ -201,7 +202,7 @@ float ComputeLights(
 			),
 
 			distanceRecip
-		);
+		), maxValue);
 
 		__m128 pointLightSum = _mm_add_ps(
 			_mm256_castps256_ps128(pointLight),
@@ -248,7 +249,6 @@ float ComputeLights(
 		&lights->dirLightsIntensity[0]
 	);
 
-	// TODO: debug this, i suspect this might crash
 	i = 0;
 	for(; i < lights->dirLightsSize - 8; i += 8) {
 		__m256 dirLightDirX = _mm256_load_ps(dirLightsDirXPointer);
@@ -259,7 +259,7 @@ float ComputeLights(
 		);
 
 		// _mm256_fmadd_ps isn't supported on my machine :(
-		__m256 dirLight = _mm256_mul_ps(
+		__m256 dirLight = _mm256_max_ps(_mm256_mul_ps(
 			dirLightIntensity,
 			_mm256_add_ps(
 				_mm256_add_ps(
@@ -269,7 +269,7 @@ float ComputeLights(
 
 				_mm256_mul_ps(normalZ, dirLightDirZ)
 			)
-		);
+		), maxValue);
 
 		__m128 dirLightSum = _mm_add_ps(
 			_mm256_castps256_ps128(dirLight),
@@ -298,9 +298,7 @@ float ComputeLights(
 		);
 	}
 
-	return min(
-		max(0, result + lights->ambientLightAmount), 1
-	);
+	return min(result + lights->ambientLightAmount, 1);
 }
 
 void ComputeLightsForTri(TriIndices *triIndices, ProgramState *state) {
