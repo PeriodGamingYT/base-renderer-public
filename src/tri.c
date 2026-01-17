@@ -1,4 +1,4 @@
-#include <tri.h>
+#include <base-renderer.h>
 
 // https://raw.githubusercontent.com/OneLoneCoder/Javidx9/refs/heads/master/ConsoleGameEngine/BiggerProjects/Engine3D/OneLoneCoder_olcEngine3D_Part4.cpp
 // ^-- started from there (some of the concepts in this code are still in here) but there are many things

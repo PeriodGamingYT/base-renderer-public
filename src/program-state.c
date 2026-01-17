@@ -1,4 +1,4 @@
-#include <program-state.h>
+#include <base-renderer.h>
 
 void FreePage(uint8_t **memory) {
 	if(*memory == NULL) { return; }

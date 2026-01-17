@@ -1,4 +1,4 @@
-#include <mesh.h>
+#include <base-renderer.h>
 
 Mesh InitMesh(
 	TriIndices *triIndices, int triIndicesSize,

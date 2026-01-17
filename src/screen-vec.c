@@ -1,4 +1,4 @@
-#include <screen-vec.h>
+#include <base-renderer.h>
 
 ScreenVec RectToScreenVecSize(RECT rect) {
 	return (ScreenVec) {

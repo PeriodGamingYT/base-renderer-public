@@ -1,4 +1,4 @@
-#include <render.h>
+#include <base-renderer.h>
 
 void Cleanup(ProgramState *state) {
 	state->isRunning = FALSE;
@@ -12,7 +12,7 @@ void Cleanup(ProgramState *state) {
 	FreePage((uint8_t **)(&state->worldPoints));
 	FreePage((uint8_t **)(&state->cameraPoints));
 
-	FreeArena(&state->lights);
+	FreeLightsSimd(&state->lights);
 }
 
 LRESULT CALLBACK WindowProc(
@@ -134,12 +134,14 @@ int WINAPI WinMain(
 		MESH_POINTS_CAP * sizeof(Vec)
 	));
 
-	#define LIGHTS_CAP 128
-	state.lights = InitArena(
-		sizeof(Light), LIGHTS_CAP
-	);
-
 	// START DEMO INIT CODE SECTION
+		state.lights = InitLightsSimd(
+			0.1,
+			LIGHT_TYPE_DIRECTIONAL, (float)(0.5), VecNormal(VEC(5, 0.5, 1)),
+			LIGHT_TYPE_POINT, (float)(25), VEC(-2, 0, -3),
+			LIGHT_TYPE_END
+		);
+
 		Mesh *mesh = (Mesh *)(AppendToArena(
 			&state.meshes, 1
 		));
@@ -150,29 +152,6 @@ int WINAPI WinMain(
 			VEC(0, 10, 0),
 			EulerToQuaternion(VEC(M_PI, 1.75 * M_PI, 0))
 		);
-
-		Light *ambientLight = (Light *)(AppendToArena(
-			&state.lights, 1
-		));
-
-		ambientLight->type = LIGHT_TYPE_AMBIENT;
-		ambientLight->intensity = 0.1;
-
-		Light *directionalLight = (Light *)(AppendToArena(
-			&state.lights, 1
-		));
-
-		directionalLight->type = LIGHT_TYPE_DIRECTIONAL;
-		directionalLight->intensity = 0.5;
-		directionalLight->directional.direction = VecNormal(VEC(5, 0.5, 1));
-
-		Light *pointLight = (Light *)(AppendToArena(
-			&state.lights, 1
-		));
-
-		pointLight->type = LIGHT_TYPE_POINT;
-		pointLight->intensity = 25;
-		pointLight->point.pos = VEC(-2, 0, -3);
 	// END DEMO INIT CODE SECTION
 
 	LPCTSTR className = TEXT("BaseRenderer");
@@ -332,6 +311,8 @@ int WINAPI WinMain(
 		memcpy(state.pastKeys, state.keys, sizeof(Keys));
 		state.frameCount++;
 	}
+
+	Cleanup(&state);
 
 	return 0;
 }
