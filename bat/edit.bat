@@ -36,10 +36,11 @@ SET RootPath=%~dp0.\..
 	SET IsInvalidCommandLine=0
 
 	FOR %%x IN (%*) DO (
-		IF "%%x" == "use-editor" ( SET IsEditorUpcoming=1 )
 		IF "!IsEditorUpcoming!" == "1" (
 			SET Editor=%%x
 			SET IsEditorUpcoming=0
+		)
+		IF "%%x" == "use-editor" ( SET IsEditorUpcoming=1
 		)
 
 		IF "%%x" == "include-assets" ( SET IncludeAssets=1
