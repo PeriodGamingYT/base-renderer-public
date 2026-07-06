@@ -1,4 +1,5 @@
-REM source-treks, grok and jump through C source code easily
+REM base-renderer-public, a zero-dependency (besides C, Win32, and instrinsics)
+REM software renderer.
 REM Copyright (C) 2025  Nathan Phillips
 
 REM This program is free software; you can redistribute it and/or modify
@@ -26,7 +27,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 	REM Address sanitizer isn't used here since it gets hung up on not being able
 	REM to scan kernel32.lib and ntdll.lib
-	SET DebugCompilerFlags=/Zi /MTd /DEBUG
+	SET DebugCompilerFlags=/Z7 /MTd /DEBUG:FULL
 	SET ReleaseCompilerFlags=/O2
 	SET TestingCompilerFlags=/DTESTING_MODE
 

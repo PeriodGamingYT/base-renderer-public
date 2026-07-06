@@ -1,4 +1,5 @@
-REM source-treks, grok and jump through C source code easily
+REM base-renderer-public, a zero-dependency (besides C, Win32, and instrinsics)
+REM software renderer.
 REM Copyright (C) 2025  Nathan Phillips
 
 REM This program is free software; you can redistribute it and/or modify
@@ -23,10 +24,10 @@ CALL "%RootPath%\bat\vs-setup-caller-snippet.bat"
 SETLOCAL ENABLEDELAYEDEXPANSION
 
 	REM Default parameters
-	SET DefaultNoCompile=0
+	SET DefaultDoCompile=1
 
 	REM Flag parameters
-	SET DoCompile=!DefaultNoCompile!
+	SET DoCompile=!DefaultDoCompile!
 
 	SET OtherArgs=
 	SET IsOption=0

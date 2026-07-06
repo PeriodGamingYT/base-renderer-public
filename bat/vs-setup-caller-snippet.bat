@@ -1,4 +1,5 @@
-REM source-treks, grok and jump through C source code easily
+REM base-renderer-public, a zero-dependency (besides C, Win32, and instrinsics)
+REM software renderer.
 REM Copyright (C) 2025  Nathan Phillips
 
 REM This program is free software; you can redistribute it and/or modify
