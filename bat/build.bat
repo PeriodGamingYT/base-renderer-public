@@ -144,6 +144,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 	REM file or directory, any input given to it that lacks two backslashes
 	REM at the end of it is assumed to be a file.
 	CL ^
+		/MP ^
 		/I"!RootPath!\include" ^
 		/Fo"!RootPath!\obj\\" ^
 		/Fd"!RootPath!\obj\\" ^
